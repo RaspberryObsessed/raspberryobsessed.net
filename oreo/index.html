@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<HTML>
+	<head>
+		<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DFZWYW50EP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-DFZWYW50EP');
+</script>
+
+		<link rel="stylesheet" href="style.css">
+	 
+	 <link rel="shortcut icon" type="image/png" href="images/favicon.ico">
+		<title>Oreo Clicker</title>
+
+		<style>
+			.sectionLeft {
+				float: left;
+				width: 80%
+			}
+			.sectionRight {
+				float: right;
+				width: 20%
+			}
+			.scoreContainer {
+				background-color: rgb(238, 238, 238, 0.6);
+				width: 50%;
+				padding: 10px;
+				border-radius: 10px;
+				font-size: 24px;
+				font-weight: bold;	
+			}
+
+			.clickerContainer img {
+				position: relative;
+				transition: all .2s ease-in-out;
+			}
+
+			.clickerContainer img:hover { transform: scale(1.10); }
+			.clickerContainer img:active { transform: scale(0.99) ; }
+
+			.shopButton {
+				background-color: #b5b5b5;
+				transition: all .2s ease-in-out;
+				border-radius: 10px;
+				width: 100%;
+				margin: 10px 0px 10px 0px;
+			}
+
+			.shopButton:hover {
+				background-color: #c7c7c7;
+				transition: all .2s ease-in-out;
+			}
+
+			.shopButton #image {
+				width: 25%;
+			}
+
+			.shopButton img {
+				height: 64px;
+				width: 64px;
+			}
+
+			.shopButton #nameAndCost p {
+				margin: 0px;
+				width: 60%;
+			}
+
+			.shopButton #nameAndCost p:first-of-type{
+				font-size: 24px;
+			}
+
+			.shopButton #amount {
+				font-size: 48px;
+				color: #595959;
+				font-family: roboto;
+				width: 15%;
+			}
+
+			.sectionFooter {
+				margin-top: 20%;
+			}
+
+			.unselectable {
+				user-select: none;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="sectionLeft">
+			<center>
+				<div class="scoreContainer unselectable">
+					<span id="score">0</span> Clicks<br>
+					<span id="scorepersecond">0</span> CPS
+				</div>
+				<br>
+				<div class="clickerContainer unselectable">
+				<img src="images/oreo.jpg" height="256px" width="256px" onclick="addToScore(clickingPower)">
+				</div>
+			</center>
+			<div class="sectionFooter">
+				<button onclick="saveGame();">Save Game</button>
+				<button onclick="resetGame();">Reset Game</button>
+			</div>
+		</div>
+
+		<div class="sectionRight"> 
+			<table class="shopButton unselectable" onclick="buyCursor()">
+				<tr>
+					<td id="image"><img src="images/cursor.jpg"></td>
+					<td id="nameAndCost">
+						<p>Clicker 1CPS</p>
+						<p><span id="cursorcost">10</span> Clicks</p>
+					</td>
+					<td id="amount"><span id="cursors">0</span></td>
+				</tr>
+			</table>
+		</div>
+		<div class="sectionRight"> 
+			<table class="shopButton unselectable" onclick="buyCursor2()">
+				<tr>
+					<td id="image"><img src="images/cursor2.jpg"></td>
+					<td id="nameAndCost">
+						<p>Ultra Clicker 10 CPS</p>
+						<p><span id="cursorcost2">50</span> Clicks</p>
+					</td>
+					<td id="amount"><span id="cursors2">0</span></td>
+				</tr>
+			</table>
+		</div>
+		<div class="sectionRight"> 
+			<table class="shopButton unselectable" onclick="buyCursor3()">
+				<tr>
+					<td id="image"><img src="images/cursor3.jpg"></td>
+					<td id="nameAndCost">
+						<p>Super Clicker 50CPS</p>
+						<p><span id="cursorcost3">100</span> Clicks</p>
+					</td>
+					<td id="amount"><span id="cursors3">0</span></td>
+				</tr>
+			</table>
+		</div>
+		<div class="sectionRight"> 
+			<table class="shopButton unselectable" onclick="buyCursor4()">
+				<tr>
+					<td id="image"><img src="images/cursor4.jpg"></td>
+					<td id="nameAndCost">
+						<p>Mega Clicker 500CPS</p>
+						<p><span id="cursorcost4">1000</span> Clicks</p>
+					</td>
+					<td id="amount"><span id="cursors4">0</span></td>
+				</tr>
+			</table>
+		</div>
+		<div class="sectionRight"> 
+			<table class="shopButton unselectable" onclick="buyCursor5()">
+				<tr>
+					<td id="image"><img src="images/cursor5.jpg"></td>
+					<td id="nameAndCost">
+						<p>Giga Clicker 2,000,000CPS</p>
+						<p><span id="cursorcost5">1000000000000</span> Clicks</p>
+					</td>
+					<td id="amount"><span id="cursors5">0</span></td>
+				</tr>
+			</table>
+		</div>
+
+
+	<script>
+		var score = 0;
+		var clickingPower = 1;
+
+		var cursorCost = 10;
+		var cursors = 0;
+		
+		var cursorCost2 = 50;
+		var cursors2 = 0;
+
+		var cursorCost3 = 100;
+		var cursors3 = 0;
+
+		var cursorCost4 = 1000;
+		var cursors4 = 0;
+
+		var cursorCost5 = 1000000000000;
+		var cursors5 = 0;
+
+		function buyCursor() {
+			if (score >= cursorCost) {
+				score = score - cursorCost;
+				cursors = cursors + 1;
+				cursorCost = Math.round(cursorCost * 1.15);
+
+				document.getElementById("score").innerHTML = score;
+				document.getElementById("cursorcost").innerHTML = cursorCost;
+				document.getElementById("cursors").innerHTML = cursors;
+				updateScorePerSecond();
+			}
+		}
+
+		function buyCursor2() {
+			if (score >= cursorCost2) {
+				score = score - cursorCost2;
+				cursors2 = cursors2 + 1;
+				cursorCost2 = Math.round(cursorCost2 * 1.15);
+
+				document.getElementById("score").innerHTML = score;
+				document.getElementById("cursorcost2").innerHTML = cursorCost2;
+				document.getElementById("cursors2").innerHTML = cursors2;
+				updateScorePerSecond();
+
+			}
+		}
+
+		function buyCursor3() {
+			if (score >= cursorCost3) {
+				score = score - cursorCost3;
+				cursors3 = cursors3 + 1;
+				cursorCost3 = Math.round(cursorCost3 * 1.15);
+
+				document.getElementById("score").innerHTML = score;
+				document.getElementById("cursorcost3").innerHTML = cursorCost3;
+				document.getElementById("cursors3").innerHTML = cursors3;
+				updateScorePerSecond();
+
+			}
+		}
+
+		function buyCursor4() {
+			if (score >= cursorCost4) {
+				score = score - cursorCost4;
+				cursors4 = cursors4 + 1;
+				cursorCost4 = Math.round(cursorCost4 * 1.15);
+
+				document.getElementById("score").innerHTML = score;
+				document.getElementById("cursorcost4").innerHTML = cursorCost4;
+				document.getElementById("cursors4").innerHTML = cursors4;
+				updateScorePerSecond();
+
+			}
+		}
+
+		function buyCursor5() {
+			if (score >= cursorCost5) {
+				score = score - cursorCost5;
+				cursors5 = cursors5 + 1;
+				cursorCost5 = Math.round(cursorCost5 * 1.15);
+
+				document.getElementById("score").innerHTML = score;
+				document.getElementById("cursorcost5").innerHTML = cursorCost5;
+				document.getElementById("cursors5").innerHTML = cursors5;
+				updateScorePerSecond();
+
+			}
+		}
+
+
+		function addToScore(amount) {
+			score = score + amount;
+			document.getElementById("score").innerHTML = score;
+		}
+
+		function updateScorePerSecond() {
+			scorePerSecond = cursors + cursors2 * 10 + cursors3 * 50 + cursors4 * 500 + cursors5 * 2000000;
+			document.getElementById("scorepersecond").innerHTML = scorePerSecond;
+		}
+
+		function loadGame() {
+			var savedGame = JSON.parse(localStorage.getItem("gameSave"));
+			if (typeof savedGame.score !== "undefined") score = savedGame.score;
+			if (typeof savedGame.clickingPower !== "undefined") clickingPower = savedGame.clickingPower;
+			if (typeof savedGame.cursorCost !== "undefined") cursorCost = savedGame.cursorCost;
+			if (typeof savedGame.cursorCost2 !== "undefined") cursorCost2 = savedGame.cursorCost2;
+			if (typeof savedGame.cursorCost3 !== "undefined") cursorCost3 = savedGame.cursorCost3;
+			if (typeof savedGame.cursorCost4 !== "undefined") cursorCost4 = savedGame.cursorCost4;
+			if (typeof savedGame.cursorCost5 !== "undefined") cursorCost5 = savedGame.cursorCost5;
+			if (typeof savedGame.cursors !== "undefined") cursors = savedGame.cursors;
+			if (typeof savedGame.cursors2 !== "undefined") cursors2 = savedGame.cursors2;
+			if (typeof savedGame.cursors3 !== "undefined") cursors3 = savedGame.cursors3;
+			if (typeof savedGame.cursors4 !== "undefined") cursors4 = savedGame.cursors4;
+			if (typeof savedGame.cursors5 !== "undefined") cursors5 = savedGame.cursors5;
+		}
+
+		window.onload = function() {
+			loadGame();
+			updateScorePerSecond();
+			document.getElementById("score").innerHTML = score;
+			document.getElementById("cursorcost").innerHTML = cursorCost;
+			document.getElementById("cursors").innerHTML = cursors;
+			document.getElementById("score").innerHTML = score;
+			document.getElementById("cursorcost2").innerHTML = cursorCost2;
+			document.getElementById("cursors2").innerHTML = cursors2;
+			document.getElementById("score").innerHTML = score;
+			document.getElementById("cursorcost3").innerHTML = cursorCost3;
+			document.getElementById("cursors3").innerHTML = cursors3;
+			document.getElementById("score").innerHTML = score;
+			document.getElementById("cursorcost4").innerHTML = cursorCost4;
+			document.getElementById("cursors4").innerHTML = cursors4;
+			document.getElementById("cursorcost5").innerHTML = cursorCost5;
+			document.getElementById("cursors5").innerHTML = cursors5;
+		};
+
+		function saveGame() {
+			var gameSave = {
+				score: score,
+				clickingPower: clickingPower,
+				cursorCost: cursorCost,
+				cursorCost2: cursorCost2,
+				cursorCost3: cursorCost3,
+				cursorCost4: cursorCost4,
+				cursorCost5: cursorCost5,
+				cursors: cursors,
+				cursors2: cursors2,
+				cursors3: cursors3,
+				cursors4: cursors4,
+				cursors5: cursors5
+			};
+			localStorage.setItem("gameSave", JSON.stringify(gameSave));
+		}
+
+		function resetGame() {
+			if (confirm("Are you sure you want to reset your game?")) {
+				var gameSave = {};
+				localStorage.setItem("gameSave", JSON.stringify(gameSave));
+				location.reload();
+			}
+		}
+
+		setInterval (function() {
+			score = score + cursors;
+			score = score + cursors2 * 10;
+			score = score + cursors3 * 50;
+			score = score + cursors4 * 500;
+			score = score + cursors5 * 2000000;
+			document.getElementById("score").innerHTML = score;
+			document.title = score + " Clicks - Oreo Clicker";
+		}, 1000) ; // 1000ms = 1 second
+
+		setInterval(function() {
+			saveGame();
+		}, 30000); // 30000ms = 30 seconds
+		document.addEventListener("keydown", function(event) {
+			if (event.ctrlKey && event.which == 83) { // ctrl +s
+				event.preventDefault();
+				saveGame();
+			}
+		}, false);
+	</script>
+	</body>
+</HTML>
