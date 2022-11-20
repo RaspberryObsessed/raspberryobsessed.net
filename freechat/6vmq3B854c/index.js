@@ -1,3 +1,17 @@
+firebase.initializeApp({
+  // Your firebase configuration object
+});
+
+const appCheck = firebase.appCheck();
+// Pass your reCAPTCHA v3 site key (public key) to activate(). Make sure this
+// key is the counterpart to the secret key you set in the Firebase console.
+appCheck.activate(
+  '6LflWR4jAAAAAFA-ydDZaRRTue4a_2DyTcvcZiA1',
+
+  // Optional argument. If true, the SDK automatically refreshes App Check
+  // tokens as needed.
+  true);
+
 
 // We enclose this in window.onload.
 // So we don't have ridiculous errors.
@@ -337,23 +351,3 @@ window.onload = function() {
       apps.chat()
     }
   }
-
-  function initialize() {
-    const { initializeApp } = require("firebase/app");
-    const { initializeAppCheck, ReCaptchaV3Provider } = require("firebase/app-check");
-
-    const app = initializeApp({
-      // Your firebase configuration object
-    });
-
-    // Pass your reCAPTCHA v3 site key (public key) to activate(). Make sure this
-    // key is the counterpart to the secret key you set in the Firebase console.
-    const appCheck = initializeAppCheck(app, {
-      provider: new ReCaptchaV3Provider('6LflWR4jAAAAAFA-ydDZaRRTue4a_2DyTcvcZiA1'),
-
-      // Optional argument. If true, the SDK automatically refreshes App Check
-      // tokens as needed.
-      isTokenAutoRefreshEnabled: true
-    });
-  }
-  initialize()
