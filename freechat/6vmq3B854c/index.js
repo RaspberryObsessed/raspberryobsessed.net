@@ -1,3 +1,4 @@
+
 // We enclose this in window.onload.
 // So we don't have ridiculous errors.
 window.onload = function() {
@@ -12,6 +13,24 @@ window.onload = function() {
       appId: "1:1034514872354:web:54022c8d4aa677fc0b727b"
   }
   
+function initialize() {
+  const { initializeApp } = require("firebase/app");
+  const { initializeAppCheck, ReCaptchaV3Provider } = require("firebase/app-check");
+
+  const app = initializeApp({
+    // Your firebase configuration object
+  });
+
+  // Pass your reCAPTCHA v3 site key (public key) to activate(). Make sure this
+  // key is the counterpart to the secret key you set in the Firebase console.
+  const appCheck = initializeAppCheck(app, {
+    provider: new ReCaptchaV3Provider('6LflWR4jAAAAAFA-ydDZaRRTue4a_2DyTcvcZiA1'),
+
+    // Optional argument. If true, the SDK automatically refreshes App Check
+    // tokens as needed.
+    isTokenAutoRefreshEnabled: true
+  });
+}
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
     // This is very IMPORTANT!! We're going to use "db" a lot.
@@ -327,11 +346,11 @@ window.onload = function() {
       }
     }
     // So we've "built" our app. Let's make it work!!
-    var app = new MEME_CHAT()
+    var apps = new MEME_CHAT()
     // If we have a name stored in localStorage.
     // Then use that name. Otherwise , if not.
     // Go to home.
-    if(app.get_name() != null){
-      app.chat()
+    if(apps.get_name() != null){
+      apps.chat()
     }
   }
