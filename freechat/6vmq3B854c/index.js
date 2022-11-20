@@ -1,22 +1,3 @@
-import firebase from "firebase/app";
-import "firebase/app-check";
-
-function initialize() {
-  firebase.initializeApp({
-    // Your firebase configuration object
-  });
-
-  const appCheck = firebase.appCheck();
-  // Pass your reCAPTCHA v3 site key (public key) to activate(). Make sure this
-  // key is the counterpart to the secret key you set in the Firebase console.
-  appCheck.activate(
-    '6LflWR4jAAAAAFA-ydDZaRRTue4a_2DyTcvcZiA1',
-
-    // Optional argument. If true, the SDK automatically refreshes App Check
-    // tokens as needed.
-    true);
-}
-
 // We enclose this in window.onload.
 // So we don't have ridiculous errors.
 window.onload = function() {
