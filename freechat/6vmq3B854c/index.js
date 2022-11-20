@@ -31,6 +31,7 @@ function initialize() {
     isTokenAutoRefreshEnabled: true
   });
 }
+initialize()
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
     // This is very IMPORTANT!! We're going to use "db" a lot.
