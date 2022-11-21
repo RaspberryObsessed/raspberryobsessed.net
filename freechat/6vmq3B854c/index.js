@@ -219,10 +219,13 @@ window.onload = function() {
         }
   
         // Get the firebase database value
-        db.ref('chats/').once('value', function(message_object) {
-          // This index is mortant. It will help organize the chat in order
+        
+        // Change this for server
+        db.ref('chats/1/').once('value', function(message_object) {
+          // This index is imortant. It will help organize the chat in order
           var index = parseFloat(message_object.numChildren()) + 1
-          db.ref('chats/' + `message_${index}`).set({
+          // Change this for server
+          db.ref('chats/1/' + `message_${index}`).set({
             name: parent.get_name(),
             message: message,
             index: index
@@ -248,7 +251,9 @@ window.onload = function() {
         var chat_content_container = document.getElementById('chat_content_container')
   
         // Get the chats from firebase
-        db.ref('chats/').on('value', function(messages_object) {
+
+        // Change this for server
+        db.ref('chats/1/').on('value', function(messages_object) {
           // When we get the data clear chat_content_container
           chat_content_container.innerHTML = ''
           // if there are no messages in the chat. Retrun . Don't load anything
