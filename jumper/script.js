@@ -1,6 +1,7 @@
 var character = document.getElementById("character");
 var block = document.getElementById("block");
 
+
 function jump(){
     if(character.classList != "animate"){
     character.classList.add("animate");
@@ -32,6 +33,10 @@ var checkDead = setInterval(function(){
     if(blockLeft<20 && blockLeft>0 && characterTop>=130){
         block.style.animation = "none";
         block.style.display = "none";
-        alert("Game Over")
+        character.style.animation = "none";
+        character.style.display = "none";
+        if (confirm("Game Over! Press OK to restart.")) {
+            location.reload();
+        }
     }
 },10);
