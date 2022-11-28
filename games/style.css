@@ -5,6 +5,10 @@
     margin: 0;
 }
 
+img {
+    border-radius: 20%;
+}
+
 body{
     font-size: 1rem;
     font-family: 'Roboto', sans-serif;
