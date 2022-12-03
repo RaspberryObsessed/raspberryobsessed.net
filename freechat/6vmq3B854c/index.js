@@ -11,7 +11,6 @@ window.onload = function() {
       messagingSenderId: "1034514872354",
       appId: "1:1034514872354:web:54022c8d4aa677fc0b727b"
   }
-  
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
     // This is very IMPORTANT!! We're going to use "db" a lot.
@@ -332,11 +331,11 @@ window.onload = function() {
       }
     }
     // So we've "built" our app. Let's make it work!!
-    var app = new MEME_CHAT()
+    var apps = new MEME_CHAT()
     // If we have a name stored in localStorage.
     // Then use that name. Otherwise , if not.
     // Go to home.
-    if(app.get_name() != null){
-      app.chat()
+    if(apps.get_name() != null){
+      apps.chat()
     }
   }
