@@ -4,7 +4,7 @@
   margin: 0;
 }
 
-body{
+#cookies{
   font-size: 1rem;
   font-family: 'Roboto', sans-serif;
 }
@@ -24,6 +24,7 @@ body{
   position: fixed;
   bottom: 0;
   color: white;
+  font-weight: 500;
   background-color: rgba(1, 65, 139, 0.7);
   z-index: 1;
   display: none;
@@ -351,7 +352,7 @@ body{
   }
   /* Track */
   ::-webkit-scrollbar-track {
-    background: #cccs;
+    background: cccs;
   }
   /* Handle */
   ::-webkit-scrollbar-thumb {
