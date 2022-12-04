@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /freechat/6vmq3B854c
+Disallow: /freechat/6vmq3B854c/index.html
+Disallow: /freechat/6vmq3B854c/index.css
+Disallow: /freechat/6vmq3B854c/index.js
+Disallow: /freechat/6vmq3B854c/script.js
