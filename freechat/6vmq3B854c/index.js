@@ -11,6 +11,18 @@ window.onload = function() {
       messagingSenderId: "1034514872354",
       appId: "1:1034514872354:web:54022c8d4aa677fc0b727b"
   }
+    var firebase = require('firebase');
+    var firebaseui = require('firebaseui');
+    var ui = new firebaseui.auth.AuthUI(firebase.auth());
+    ui.start('#firebaseui-auth-container', {
+      signInOptions: [
+        {
+          provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
+          requireDisplayName: false
+        }
+      ]
+    });
+
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
     // This is very IMPORTANT!! We're going to use "db" a lot.
