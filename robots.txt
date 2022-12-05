@@ -19,3 +19,5 @@ Allow: /retro-bowl
 Allow: /subway
 Allow: /grey-box-testing
 Allow: /changes
+
+Sitemap: https://raspberryobsessed.net/sitemap.xml
