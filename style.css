@@ -3,12 +3,31 @@
 *{
     padding: 0;
     margin: 0;
+    font-weight: 500;
 }
 
 body{
     font-size: 1rem;
     font-family: 'Roboto', sans-serif;
 }
+
+.headerText {
+    background-color: rgb(238, 238, 238, 0.6);
+    width: 40%;
+    padding: 5px;
+    border-radius: 10px;
+    font-size: 40px;
+}
+
+.unselectable {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.buttonContainer img:hover { transform: scale(1.10); }
+.buttonContainer img:active { transform: scale(0.99) ; }
 
 .container{
     width: 1600px;
@@ -37,6 +56,7 @@ body{
     align-items: center;
     flex-wrap: wrap;
     gap: 10px;
+    font-weight: 500;
 }
 
 .cookies a{
