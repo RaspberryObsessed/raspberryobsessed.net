@@ -96,9 +96,9 @@
         <div class="horizontal">
           <div class="vertical">
             <div class="box">
-              <input style="margin: 16px; text-align: center;" id="password" type="password" placeholder="password" /> <br />
+              <input style="margin: 16px; text-align: center;" id="password" type="password" placeholder="Chat Code" /> <br />
               <button id="loginbutton" type="button">Enter</button>
-              <p id="wrongPassword" style="display: none">wrong password</p>
+              <p id="wrongPassword" style="display: none">Chat Code Does Not Exist</p>
             </div>
           </div>
         </div>
@@ -135,7 +135,7 @@
             parent.location.hash= hash;
     
             //$("#wrongPassword").show();
-            $("#password").attr("placeholder","wrong password");
+            $("#password").attr("placeholder","Chat Code Does Not Exist");
             $("#password").val("");
           }
         });
